@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talleres Florales — Alcalá de la Jovada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FBF8F3;
+            --sand: #E8DCC4;
+            --terracotta: #D4745C;
+            --olive: #8B9556;
+            --ochre: #D4A574;
+            --clay: #A6755C;
+            --deep-earth: #6B4E3D;
+            --charcoal: #2B2B2B;
+            --warm-white: #FFFDF9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--charcoal);
+            background: var(--warm-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(43, 43, 43, 0.08);
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            color: var(--terracotta);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Hero Section with Split Layout */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            padding: 60px 60px 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            color: var(--deep-earth);
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            color: var(--clay);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--terracotta);
+            width: fit-content;
+        }
+
+        .hero-cta:hover {
+            background: transparent;
+            color: var(--terracotta);
+        }
+
+        .hero-location {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--olive);
+        }
+
+        .hero-image {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 80px;
+            background: var(--sand);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: var(--deep-earth);
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--clay);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Workshops Section */
+        .workshops {
+            padding: 100px 80px;
+            background: var(--warm-white);
+        }
+
+        .workshops h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--deep-earth);
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .workshop-card {
+            padding: 40px;
+            background: var(--cream);
+            border-left: 3px solid var(--terracotta);
+            transition: transform 0.3s;
+        }
+
+        .workshop-card:hover {
+            transform: translateX(5px);
+        }
+
+        .workshop-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--deep-earth);
+            font-weight: 600;
+        }
+
+        .workshop-card p {
+            color: var(--clay);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .workshop-details {
+            padding-top: 15px;
+            border-top: 1px solid rgba(166, 117, 92, 0.2);
+            font-size: 0.9rem;
+            color: var(--clay);
+        }
+
+        .workshop-details div {
+            margin-bottom: 8px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 40px;
+            background: var(--cream);
+        }
+
+        .gallery h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--deep-earth);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 80px;
+            background: var(--deep-earth);
+            color: var(--warm-white);
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .contact-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--sand);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--ochre);
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+        }
+
+        .contact-value a {
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: var(--terracotta);
+        }
+
+        .contact-cta {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--terracotta);
+        }
+
+        .contact-cta:hover {
+            background: transparent;
+            color: var(--terracotta);
+        }
+
+        /* Footer */
+        footer {
+            background: #1A1A1A;
+            color: var(--cream);
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-image {
+                height: 50vh;
+                order: -1;
+            }
+
+            .hero-content {
+                padding: 60px 40px;
+            }
+
+            .nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .about,
+            .workshops,
+            .gallery,
+            .contact {
+                padding: 80px 30px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.wide {
+                grid-column: span 1;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">Flores</div>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#talleres">Talleres</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Image -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Crea con tus manos</h1>
+            <p class="hero-text">
+                Talleres de arreglos florales en un pueblo español auténtico. Flores mediterráneas, técnicas profesionales, ambiente cálido.
+            </p>
+            <a href="#contacto" class="hero-cta">Consultar Disponibilidad</a>
+            <p class="hero-location">Alcalá de la Jovada, Alicante</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1200&q=80" alt="Manos creando arreglo floral">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="about-container">
+            <h2>Una experiencia única</h2>
+            <p class="about-text">
+                Con años de experiencia como profesora de arreglos florales, creo espacios donde puedes desconectar, crear y conectar. Perfecto para despedidas de soltera, eventos corporativos, o una tarde especial con amigas en un pueblo valenciano auténtico.
+            </p>
+        </div>
+    </section>
+
+    <!-- Workshops Section -->
+    <section id="talleres" class="workshops">
+        <h2>Los talleres</h2>
+        <div class="workshop-grid">
+            <div class="workshop-card">
+                <h3>Taller de Ramos</h3>
+                <p>Aprende a crear un ramo profesional de flores frescas. Técnicas de acondicionamiento, equilibrio y diseño mediterráneo.</p>
+                <div class="workshop-details">
+                    <div><strong>Duración:</strong> 2-3 horas</div>
+                    <div><strong>Incluye:</strong> Flores, materiales y tu ramo</div>
+                </div>
+            </div>
+
+            <div class="workshop-card">
+                <h3>Despedida de Soltera</h3>
+                <p>Celebra con tus amigas creando coronas florales o ramos especiales. La novia se lleva un detalle único.</p>
+                <div class="workshop-details">
+                    <div><strong>Duración:</strong> 2-3 horas</div>
+                    <div><strong>Ideal para:</strong> Grupos 6-20 personas</div>
+                </div>
+            </div>
+
+            <div class="workshop-card">
+                <h3>Eventos Corporativos</h3>
+                <p>Team building creativo y diferente. Talleres personalizados que se adaptan a tus colores corporativos y necesidades.</p>
+                <div class="workshop-details">
+                    <div><strong>Duración:</strong> Flexible 2-4 horas</div>
+                    <div><strong>Incluye:</strong> Programa personalizado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2>Inspiración</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item wide">
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80" alt="Mesa de taller con flores">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1594735318630-4c3f0e8d4811?auto=format&fit=crop&w=600&q=80" alt="Flores coloridas">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558563434-1a3c0e4a8f6f?auto=format&fit=crop&w=600&q=80" alt="Ramo de flores">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1535012375576-c7c6b02f3981?auto=format&fit=crop&w=600&q=80" alt="Flores en mesa">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="contact-container">
+            <h2>Consulta disponibilidad</h2>
+            <p class="contact-text">
+                Los talleres se organizan según demanda para grupos pequeños e íntimos. Ponte en contacto para crear una experiencia perfecta para tu grupo.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:tu@email.com">tu@email.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">
+                        <a href="https://wa.me/34XXXXXXXXX">+34 XXX XXX XXX</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">
+                        <a href="https://instagram.com/tuinstagram" target="_blank">@tuinstagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/34XXXXXXXXX?text=Hola! Me gustaría consultar sobre los talleres de flores" class="contact-cta">Enviar Mensaje</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Talleres Florales — Alcalá de la Jovada
+    </footer>
+</body>
+</html>
